@@ -1,4 +1,4 @@
-const text = document.querySelector(".bouncing-text");
+const text = document.querySelector(".bouncy");
 let x = 0;
 let y = 0;
 let xDirection = 1;

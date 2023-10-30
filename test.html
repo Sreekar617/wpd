@@ -2,80 +2,63 @@
 <html>
 
 <head>
-  <title>rice</title>
+  <title>Mouse Trail Effect</title>
   <style>
-    p.small {
-      line-height: 1.55;
-      font-size: 18px;
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #trail-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .trail {
+      position: absolute;
+      font-weight: bold;
+      color: #3498db;
     }
   </style>
 </head>
 
 <body>
-  <h1>top 5 rice</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>dish</th>
-        <th>features/differences</th>
-        <th>vegetarian?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>pulao</td>
-        <td>kinda like fried rice</td>
-        <td>yes</td>
-      </tr>
-      <tr>
-        <td>egg fried rice</td>
-        <td>fried rice</td>
-        <td>no</td>
-      </tr>
-      <tr>
-        <td>biryani</td>
-        <td>the best dish to ever exist</td>
-        <td>no (L bozo)</td>
-      </tr>
-      <tr>
-        <td>plain rice</td>
-        <td>ew</td>
-        <td>yes</td>
-      </tr>
-    </tbody>
-  </table><br>
-  <hr>
-  <table>
-    <thead>
-      <tr>
-        <th>dish</th>
-        <th>features/differences</th>
-        <th>vegetarian?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>pulao</td>
-        <td>kinda like fried rice</td>
-        <td>yes</td>
-      </tr>
-      <tr>
-        <td>egg fried rice</td>
-        <td>fried rice</td>
-        <td>no</td>
-      </tr>
-      <tr>
-        <td>biryani</td>
-        <td>the best dish to ever exist</td>
-        <td>no (L bozo)</td>
-      </tr>
-      <tr>
-        <td>plain rice</td>
-        <td>ew</td>
-        <td>yes</td>
-      </tr>
-    </tbody>
-  </table>
+  <div id="trail-container"></div>
+
+  <script>
+    const trailContainer = document.getElementById('trail-container');
+    const numHeadings = 30;
+    const headings = [];
+
+    for (let i = 0; i < numHeadings; i++) {
+      const heading = document.createElement('div');
+      heading.className = 'trail';
+
+      // Create a random heading element among h1 to h6
+      const randomHeading = Math.floor(Math.random() * 6) + 1;
+      heading.innerHTML = `<h${randomHeading}>H${randomHeading}</h${randomHeading}>`;
+
+      trailContainer.appendChild(heading);
+      headings.push(heading);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      for (let i = 0; i < numHeadings; i++) {
+        const heading = headings[i];
+        moveHeading(heading, e.clientX, e.clientY);
+      }
+    });
+
+    function moveHeading(heading, x, y) {
+      const dx = x + (Math.random() - 0.5) * 40;
+      const dy = y + (Math.random() - 0.5) * 40;
+
+      heading.style.left = dx + 'px';
+      heading.style.top = dy + 'px';
+    }
+  </script>
 </body>
 
 </html>

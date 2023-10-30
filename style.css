@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Light blue for the sky */
+}
+
+.water {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('mouse.png') repeat;
+}
+
+.ripple {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #87CEEB 10%, transparent 12%);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}

@@ -4,50 +4,538 @@
 <head>
     <title>sreekar ramisetty</title>
     <style>
+        /* quick try to fix this monstrosity with three classes */
         p.small {
             line-height: 1.55;
             font-size: 18px;
+        }
+
+        #trail-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .normal {
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .totallyNormalStyling {
+            padding-left: 0.7%;
+        }
+
+        /* add website css */
+        body {
+            background: var(--pdl-bg-faint);
+            color: var(--pdl-fg-base);
+            font: var(--chat-bubble-font-families-text-base-normal);
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        @media screen and (min-width: 685px) {
+            * {
+                scrollbar-width: thin;
+                scrollbar-color: var(--pdl-bg-subtle) var(--pdl-bg-base);
+            }
+        }
+
+        .ChatMessagesView_messagePair__ZEXUz:last-of-type {
+            min-height: calc(var(--full-height) - 150px);
+        }
+
+        .InfiniteScroll_container__PHsd4:not(.InfiniteScroll_horizontal__i7SXE) {
+            flex-direction: column;
+        }
+
+        body {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+            background: var(--pdl-bg-base);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: var(--full-height);
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            height: var(--full-height);
+        }
+
+        :root {
+            --full-height: 100%;
+            --full-height: calc(var(--vh, 1vh) * 100 - env(keyboard-inset-height, 0px));
+            --header-height: 50px;
+            --desktop-reading-column-max-width: 618px;
+            --chat-bubble-font-families-text-base-normal: 400 1.125rem/1.625rem var(--pdl-font-family-web);
+            font-size: 16px;
+            color-scheme: light;
+        }
+
+        /* interesting */
+        :root {
+            --pdl-font-family-web: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+            --pdl-font-families-text-xxs-normal: 400 0.688rem/0.963rem var(--pdl-font-family-web);
+            --pdl-font-families-text-xxs-semibold: 600 0.688rem/0.963rem var(--pdl-font-family-web);
+            --pdl-font-families-text-xxs-bold: 700 0.688rem/0.963rem var(--pdl-font-family-web);
+            --pdl-font-families-text-xs-normal: 400 0.75rem/1.05rem var(--pdl-font-family-web);
+            --pdl-font-families-text-xs-semibold: 600 0.75rem/1.05rem var(--pdl-font-family-web);
+            --pdl-font-families-text-xs-bold: 700 0.75rem/1.05rem var(--pdl-font-family-web);
+            --pdl-font-families-text-sm-normal: 400 0.875rem/1.225rem var(--pdl-font-family-web);
+            --pdl-font-families-text-sm-semibold: 600 0.875rem/1.225rem var(--pdl-font-family-web);
+            --pdl-font-families-text-sm-bold: 700 0.875rem/1.225rem var(--pdl-font-family-web);
+            --pdl-font-families-text-base-normal: 400 1rem/1.4rem var(--pdl-font-family-web);
+            --pdl-font-families-text-base-semibold: 600 1rem/1.4rem var(--pdl-font-family-web);
+            --pdl-font-families-text-base-bold: 700 1rem/1.4rem var(--pdl-font-family-web);
+            --pdl-font-families-heading-base-bold: 700 1.125rem/1.575rem var(--pdl-font-family-web);
+            --pdl-font-families-heading-md-bold: 700 1.25rem/1.75rem var(--pdl-font-family-web);
+            --pdl-motion-duration-fast: 150ms;
+            --pdl-sizing-image-xs: 1.25rem;
+            --pdl-sizing-image-sm: 2rem;
+            --pdl-sizing-image-md: 3rem;
+            --pdl-sizing-image-lg: 4.5rem;
+            --pdl-sizing-image-xl: 6.25rem;
+            --pdl-sizing-input-height-sm: 1rem;
+            --pdl-sizing-input-height-md: 1.5rem;
+            --pdl-sizing-input-height-lg: 2rem;
+            --pdl-sizing-input-height-xl: 2.5rem;
+            --pdl-sizing-input-height-xxl: 4.5rem;
+            --pdl-sizing-radius-xs: 0.125rem;
+            --pdl-sizing-radius-sm: 0.25rem;
+            --pdl-sizing-radius-md: 0.5rem;
+            --pdl-sizing-radius-lg: 0.75rem;
+            --pdl-sizing-radius-pill: 624.9375rem;
+            --pdl-sizing-radius-circle: 50%;
+            --pdl-spacing-xs: 0.25rem;
+            --pdl-spacing-sm: 0.5rem;
+            --pdl-spacing-md: 0.75rem;
+            --pdl-spacing-lg: 1rem;
+            --pdl-spacing-4xl: 2.5rem;
+        }
+
+        /* oh god */
+        :root {
+            --pdl-bg-base: #fff;
+            --pdl-bg-faint: #f7f7f7;
+            --pdl-bg-subtle: #f1f2f2;
+            --pdl-bg-muted: #e4e7e7;
+            --pdl-bg-emphasis: #a5acac;
+            --pdl-fg-base: #000;
+            --pdl-fg-subtle: #8d9696;
+            --pdl-fg-muted: #5d6565;
+            --pdl-border-base: #e4e7e7;
+            --pdl-border-emphasis: #cfd3d3;
+            --pdl-accent-faint: #ebecff;
+            --pdl-accent-subtle: #d2d2fe;
+            --pdl-accent-emphasis: #3b3abe;
+            --pdl-accent-on-accent: #fff;
+            --pdl-warning-base: #b38d05;
+            --pdl-warning-on-warning: #fff;
+            --pdl-error-base: #ad1840;
+            --pdl-error-on-error: #fff;
+            --pdl-success-base: #22a878;
+            --pdl-success-on-success: #fff;
+            --pdl-action-default-bg: #fff;
+            --pdl-action-default-fg-placeholder: #8d9696;
+            --pdl-action-default-fg: #000;
+            --pdl-action-default-border: #a5acac;
+            --pdl-action-hover-border: #8d9696;
+            --pdl-action-hover-border-accent: #7878f2;
+            --pdl-action-disabled-bg: #f7f7f7;
+            --pdl-action-disabled-fg: #a5acac;
+            --pdl-action-disabled-border: #e4e7e7;
+            --pdl-action-error-border: #ad1840;
+            --pdl-action-checked-bg: #5d5cde;
+            --pdl-action-checked-fg: #fff;
+            --pdl-action-checked-border: #5d5cde;
+            --pdl-action-checked-disabled-bg: #ebecff;
+            --pdl-action-checked-disabled-fg: #b4b4fd;
+            --pdl-action-checked-disabled-border: #b4b4fd;
+            --pdl-link-theme-primary-default-fg: #3b3abe;
+            --pdl-link-theme-primary-disabled-fg: #a5acac;
+            --pdl-link-theme-danger-default-fg: #8a0a2c;
+            --pdl-link-theme-danger-disabled-fg: #a5acac;
+            --pdl-box-shadow-base: 0 0 6px 1px rgba(0, 0, 0, .1);
+        }
+
+        /* help me */
+        :root {
+            --pdl-comp-toast-box-shadow: var(--pdl-box-shadow-base);
+            --pdl-comp-textarea-transition: border-color var(--pdl-motion-duration-fast);
+            --pdl-comp-text-input-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast), color var(--pdl-motion-duration-fast);
+            --pdl-comp-switch-border-radius: var(--pdl-sizing-radius-pill);
+            --pdl-comp-switch-inner-transition: var(--pdl-motion-duration-fast);
+            --pdl-comp-radio-border-radius: var(--pdl-sizing-radius-circle);
+            --pdl-comp-radio-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast);
+            --pdl-comp-overlay-box-shadow: var(--pdl-box-shadow-base);
+            --pdl-comp-dropdown-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast), color var(--pdl-motion-duration-fast);
+            --pdl-comp-chip-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast);
+            --pdl-comp-checkbox-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast), color var(--pdl-motion-duration-fast);
+            --pdl-comp-button-transition: background-color, var(--pdl-motion-duration-fast), border-color var(--pdl-motion-duration-fast);
+            --pdl-comp-button-border-radius: var(--pdl-sizing-radius-pill);
+            --pdl-comp-button-round-transition: background-color, var(--pdl-motion-duration-fast);
+            --pdl-comp-button-round-border-radius: var(--pdl-sizing-radius-pill);
+            --pdl-comp-avatar-theme-circle-border-radius: var(--pdl-sizing-radius-pill);
+            --pdl-comp-anchor-transition: color var(--pdl-motion-duration-fast);
+            --pdl-comp-toast-theme-error-fg: var(--pdl-error-on-error);
+            --pdl-comp-toast-theme-error-bg: var(--pdl-error-base);
+            --pdl-comp-toast-theme-success-fg: var(--pdl-success-on-success);
+            --pdl-comp-toast-theme-success-bg: var(--pdl-success-base);
+            --pdl-comp-toast-theme-info-border: var(--pdl-border-base);
+            --pdl-comp-toast-theme-info-fg: var(--pdl-fg-base);
+            --pdl-comp-toast-theme-info-bg: var(--pdl-bg-base);
+            --pdl-comp-toast-padding: var(--pdl-spacing-sm) var(--pdl-spacing-md);
+            --pdl-comp-toast-gap: var(--pdl-spacing-sm);
+            --pdl-comp-toast-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-textarea-state-padding-y: var(--pdl-spacing-md);
+            --pdl-comp-textarea-state-error-border: var(--pdl-action-error-border);
+            --pdl-comp-textarea-state-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-textarea-state-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-textarea-state-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-textarea-state-hover-border: var(--pdl-action-hover-border-accent);
+            --pdl-comp-textarea-state-default-fg-placeholder: var(--pdl-action-default-fg-placeholder);
+            --pdl-comp-textarea-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-textarea-state-default-fg: var(--pdl-action-default-fg);
+            --pdl-comp-textarea-state-default-bg: var(--pdl-action-default-bg);
+            --pdl-comp-textarea-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-textarea-padding-y: var(--pdl-spacing-sm);
+            --pdl-comp-textarea-padding-x: var(--pdl-spacing-md);
+            --pdl-comp-textarea-height: var(--pdl-sizing-input-height-xxl);
+            --pdl-comp-text-theme-muted: var(--pdl-fg-muted);
+            --pdl-comp-text-theme-subtle: var(--pdl-fg-subtle);
+            --pdl-comp-text-theme-base: var(--pdl-fg-base);
+            --pdl-comp-text-input-state-error-border: var(--pdl-action-error-border);
+            --pdl-comp-text-input-state-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-text-input-state-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-text-input-state-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-text-input-state-hover-border: var(--pdl-action-hover-border-accent);
+            --pdl-comp-text-input-state-default-fg-placeholder: var(--pdl-action-default-fg-placeholder);
+            --pdl-comp-text-input-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-text-input-state-default-fg: var(--pdl-action-default-fg);
+            --pdl-comp-text-input-state-default-bg: var(--pdl-action-default-bg);
+            --pdl-comp-text-input-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-text-input-padding-x: var(--pdl-spacing-md);
+            --pdl-comp-text-input-height: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-tab-state-active-border-color-bottom: var(--pdl-accent-emphasis);
+            --pdl-comp-tab-state-active-fg: var(--pdl-accent-emphasis);
+            --pdl-comp-tab-state-hover-bg: var(--pdl-bg-faint);
+            --pdl-comp-tab-state-default-border-color-bottom: var(--pdl-border-emphasis);
+            --pdl-comp-tab-state-default-fg: var(--pdl-fg-base);
+            --pdl-comp-tab-gap: var(--pdl-spacing-xs);
+            --pdl-comp-tab-height: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-switch-outer-state-checked-disabled-bg: var(--pdl-action-checked-disabled-bg);
+            --pdl-comp-switch-outer-state-disabled-bg: var(--pdl-bg-muted);
+            --pdl-comp-switch-outer-state-default-bg: var(--pdl-bg-emphasis);
+            --pdl-comp-switch-outer-height: var(--pdl-sizing-input-height-md);
+            --pdl-comp-switch-inner-state-checked-disabled-bg: var(--pdl-action-checked-disabled-fg);
+            --pdl-comp-switch-inner-state-checked-bg: var(--pdl-accent-on-accent);
+            --pdl-comp-switch-inner-state-disabled-bg: var(--pdl-bg-faint);
+            --pdl-comp-switch-inner-state-default-bg: var(--pdl-accent-on-accent);
+            --pdl-comp-switch-inner-position: var(--pdl-spacing-xs);
+            --pdl-comp-radio-state-checked-disabled-border: var(--pdl-action-checked-disabled-border);
+            --pdl-comp-radio-state-checked-disabled-fg: var(--pdl-action-checked-disabled-fg);
+            --pdl-comp-radio-state-checked-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-radio-state-checked-bg: var(--pdl-action-default-bg);
+            --pdl-comp-radio-state-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-radio-state-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-radio-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-radio-state-default-bg: var(--pdl-action-default-bg);
+            --pdl-comp-radio-text-fg: var(--pdl-action-default-fg);
+            --pdl-comp-radio-gap: var(--pdl-spacing-sm);
+            --pdl-comp-radio-dimension: var(--pdl-sizing-input-height-sm);
+            --pdl-comp-overlay-border-radius: var(--pdl-sizing-radius-lg);
+            --pdl-comp-overlay-border: var(--pdl-border-base);
+            --pdl-comp-message-note-theme-error-fg: var(--pdl-error-base);
+            --pdl-comp-message-note-theme-neutral-fg: var(--pdl-fg-muted);
+            --pdl-comp-message-bubble-theme-response-fg: var(--pdl-fg-base);
+            --pdl-comp-message-bubble-theme-response-bg: var(--pdl-bg-faint);
+            --pdl-comp-message-bubble-theme-prompt-fg: var(--pdl-accent-on-accent);
+            --pdl-comp-message-bubble-theme-prompt-bg: var(--pdl-accent-emphasis);
+            --pdl-comp-message-bubble-gap: var(--pdl-spacing-sm);
+            --pdl-comp-message-bubble-padding: var(--pdl-spacing-sm) var(--pdl-spacing-lg);
+            --pdl-comp-message-bubble-border-radius: var(--pdl-sizing-radius-lg);
+            --pdl-comp-message-gap: var(--pdl-spacing-sm);
+            --pdl-comp-label-state-error-fg: var(--pdl-error-base);
+            --pdl-comp-label-state-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-label-state-default-fg: var(--pdl-action-default-fg);
+            --pdl-comp-heading-size-md: var(--pdl-font-families-heading-md-bold);
+            --pdl-comp-heading-size-base: var(--pdl-font-families-heading-base-bold);
+            --pdl-comp-heading-theme-base: var(--pdl-fg-base);
+            --pdl-comp-form-note-state-error-fg: var(--pdl-error-base);
+            --pdl-comp-form-note-state-default-fg: var(--pdl-fg-subtle);
+            --pdl-comp-dropdown-state-error-border: var(--pdl-action-error-border);
+            --pdl-comp-dropdown-state-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-dropdown-state-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-dropdown-state-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-dropdown-state-hover-border: var(--pdl-action-hover-border-accent);
+            --pdl-comp-dropdown-state-default-fg-placeholder: var(--pdl-action-default-fg-placeholder);
+            --pdl-comp-dropdown-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-dropdown-state-default-fg: var(--pdl-action-default-fg);
+            --pdl-comp-dropdown-state-default-bg: var(--pdl-action-default-bg);
+            --pdl-comp-dropdown-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-dropdown-padding-x: var(--pdl-spacing-md);
+            --pdl-comp-dropdown-height: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-divider-theme-emphasis: var(--pdl-border-emphasis);
+            --pdl-comp-divider-theme-base: var(--pdl-border-base);
+            --pdl-comp-chip-state-active-border: var(--pdl-action-hover-border);
+            --pdl-comp-chip-state-active-bg: var(--pdl-bg-subtle);
+            --pdl-comp-chip-state-hover-border: var(--pdl-action-hover-border);
+            --pdl-comp-chip-state-hover-bg: var(--pdl-bg-faint);
+            --pdl-comp-chip-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-chip-state-default-fg: var(--pdl-fg-base);
+            --pdl-comp-chip-state-default-bg: var(--pdl-bg-base);
+            --pdl-comp-chip-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-chip-height: var(--pdl-sizing-input-height-lg);
+            --pdl-comp-chip-gap: var(--pdl-spacing-xs);
+            --pdl-comp-chip-padding-x: var(--pdl-spacing-lg);
+            --pdl-comp-checkbox-state-checked-disabled-border: var(--pdl-action-checked-disabled-border);
+            --pdl-comp-checkbox-state-checked-disabled-fg: var(--pdl-action-checked-disabled-fg);
+            --pdl-comp-checkbox-state-checked-disabled-bg: var(--pdl-action-checked-disabled-bg);
+            --pdl-comp-checkbox-state-checked-fg: var(--pdl-action-checked-fg);
+            --pdl-comp-checkbox-state-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-checkbox-state-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-checkbox-state-default-border: var(--pdl-action-default-border);
+            --pdl-comp-checkbox-state-default-bg: var(--pdl-action-default-bg);
+            --pdl-comp-checkbox-text-fg: var(--pdl-action-default-fg);
+            --pdl-comp-checkbox-border-radius: var(--pdl-sizing-radius-sm);
+            --pdl-comp-checkbox-gap: var(--pdl-spacing-sm);
+            --pdl-comp-checkbox-dimension: var(--pdl-sizing-input-height-sm);
+            --pdl-comp-card-padding: var(--pdl-spacing-lg);
+            --pdl-comp-card-bg: var(--pdl-bg-faint);
+            --pdl-comp-card-border-radius: var(--pdl-sizing-radius-lg);
+            --pdl-comp-button-theme-danger-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-danger-hover-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-theme-danger-fg: var(--pdl-error-base);
+            --pdl-comp-button-theme-ghost-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-ghost-hover-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-theme-ghost-fg: var(--pdl-fg-base);
+            --pdl-comp-button-theme-outline-disabled-border: var(--pdl-action-disabled-border);
+            --pdl-comp-button-theme-outline-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-outline-disabled-bg: var(--pdl-bg-base);
+            --pdl-comp-button-theme-outline-hover-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-theme-outline-border: var(--pdl-action-default-border);
+            --pdl-comp-button-theme-outline-fg: var(--pdl-fg-base);
+            --pdl-comp-button-theme-outline-bg: var(--pdl-bg-base);
+            --pdl-comp-button-theme-tertiary-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-tertiary-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-button-theme-tertiary-hover-bg: var(--pdl-accent-subtle);
+            --pdl-comp-button-theme-tertiary-fg: var(--pdl-accent-emphasis);
+            --pdl-comp-button-theme-tertiary-bg: var(--pdl-accent-faint);
+            --pdl-comp-button-theme-secondary-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-secondary-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-button-theme-secondary-hover-bg: var(--pdl-bg-muted);
+            --pdl-comp-button-theme-secondary-fg: var(--pdl-fg-base);
+            --pdl-comp-button-theme-secondary-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-theme-primary-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-theme-primary-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-button-theme-primary-hover-bg: var(--pdl-accent-emphasis);
+            --pdl-comp-button-theme-primary-fg: var(--pdl-accent-on-accent);
+            --pdl-comp-button-theme-primary-bg: var(--pdl-accent-emphasis);
+            --pdl-comp-button-sm-gap: var(--pdl-spacing-xs);
+            --pdl-comp-button-sm-padding-x: var(--pdl-spacing-lg);
+            --pdl-comp-button-sm-height: var(--pdl-sizing-input-height-lg);
+            --pdl-comp-button-md-gap: var(--pdl-spacing-sm);
+            --pdl-comp-button-md-padding-x: var(--pdl-spacing-lg);
+            --pdl-comp-button-md-height: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-button-round-theme-ghost-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-round-theme-ghost-hover-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-round-theme-ghost-fg: var(--pdl-fg-base);
+            --pdl-comp-button-round-theme-secondary-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-round-theme-secondary-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-button-round-theme-secondary-hover-bg: var(--pdl-bg-muted);
+            --pdl-comp-button-round-theme-secondary-fg: var(--pdl-fg-base);
+            --pdl-comp-button-round-theme-secondary-bg: var(--pdl-bg-subtle);
+            --pdl-comp-button-round-theme-primary-disabled-fg: var(--pdl-action-disabled-fg);
+            --pdl-comp-button-round-theme-primary-disabled-bg: var(--pdl-action-disabled-bg);
+            --pdl-comp-button-round-theme-primary-hover-bg: var(--pdl-accent-emphasis);
+            --pdl-comp-button-round-theme-primary-fg: var(--pdl-accent-on-accent);
+            --pdl-comp-button-round-theme-primary-bg: var(--pdl-accent-emphasis);
+            --pdl-comp-button-round-sm-dimension: var(--pdl-sizing-input-height-lg);
+            --pdl-comp-button-round-md-dimension: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-button-round-dimension: var(--pdl-sizing-input-height-xl);
+            --pdl-comp-banner-theme-error-fg: var(--pdl-error-on-error);
+            --pdl-comp-banner-theme-error-bg: var(--pdl-error-base);
+            --pdl-comp-banner-theme-warning-fg: var(--pdl-warning-on-warning);
+            --pdl-comp-banner-theme-warning-bg: var(--pdl-warning-base);
+            --pdl-comp-banner-theme-success-fg: var(--pdl-success-on-success);
+            --pdl-comp-banner-theme-success-bg: var(--pdl-success-base);
+            --pdl-comp-banner-spacing-gap: var(--pdl-spacing-sm);
+            --pdl-comp-banner-spacing-padding-y: var(--pdl-spacing-sm);
+            --pdl-comp-banner-spacing-padding-x: var(--pdl-spacing-4xl);
+            --pdl-comp-avatar-theme-rounded-xl-border-radius: var(--pdl-sizing-radius-lg);
+            --pdl-comp-avatar-theme-rounded-lg-border-radius: var(--pdl-sizing-radius-lg);
+            --pdl-comp-avatar-theme-rounded-md-border-radius: var(--pdl-sizing-radius-md);
+            --pdl-comp-avatar-theme-rounded-sm-border-radius: var(--pdl-sizing-radius-sm);
+            --pdl-comp-avatar-theme-rounded-xs-border-radius: var(--pdl-sizing-radius-xs);
+            --pdl-comp-avatar-size-xl: var(--pdl-sizing-image-xl);
+            --pdl-comp-avatar-size-lg: var(--pdl-sizing-image-lg);
+            --pdl-comp-avatar-size-md: var(--pdl-sizing-image-md);
+            --pdl-comp-avatar-size-sm: var(--pdl-sizing-image-sm);
+            --pdl-comp-avatar-size-xs: var(--pdl-sizing-image-xs);
+            --pdl-comp-toast-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-textarea-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-text-size-xxs-bold: var(--pdl-font-families-text-xxs-bold);
+            --pdl-comp-text-size-xxs-semibold: var(--pdl-font-families-text-xxs-semibold);
+            --pdl-comp-text-size-xxs-normal: var(--pdl-font-families-text-xxs-normal);
+            --pdl-comp-text-size-xs-bold: var(--pdl-font-families-text-xs-bold);
+            --pdl-comp-text-size-xs-semibold: var(--pdl-font-families-text-xs-semibold);
+            --pdl-comp-text-size-xs-normal: var(--pdl-font-families-text-xs-normal);
+            --pdl-comp-text-size-sm-bold: var(--pdl-font-families-text-sm-bold);
+            --pdl-comp-text-size-sm-semibold: var(--pdl-font-families-text-sm-semibold);
+            --pdl-comp-text-size-sm-normal: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-text-size-base-bold: var(--pdl-font-families-text-base-bold);
+            --pdl-comp-text-size-base-semibold: var(--pdl-font-families-text-base-semibold);
+            --pdl-comp-text-size-base-normal: var(--pdl-font-families-text-base-normal);
+            --pdl-comp-text-input-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-tab-font: var(--pdl-font-families-text-base-semibold);
+            --pdl-comp-switch-outer-state-checked-bg: var(--pdl-action-checked-bg);
+            --pdl-comp-radio-state-checked-border: var(--pdl-action-checked-border);
+            --pdl-comp-radio-state-checked-fg: var(--pdl-action-checked-bg);
+            --pdl-comp-radio-font: var(--pdl-font-families-text-base-normal);
+            --pdl-comp-message-note-font: var(--pdl-font-families-text-xs-normal);
+            --pdl-comp-message-bubble-font: var(--pdl-font-families-text-base-normal);
+            --pdl-comp-label-font: var(--pdl-font-families-text-base-normal);
+            --pdl-comp-form-note-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-dropdown-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-chip-font: var(--pdl-font-families-text-sm-semibold);
+            --pdl-comp-checkbox-state-checked-bg: var(--pdl-action-checked-bg);
+            --pdl-comp-checkbox-font: var(--pdl-font-families-text-base-normal);
+            --pdl-comp-button-sm-font: var(--pdl-font-families-text-sm-semibold);
+            --pdl-comp-button-md-font: var(--pdl-font-families-text-base-semibold);
+            --pdl-comp-banner-font: var(--pdl-font-families-text-sm-normal);
+            --pdl-comp-anchor-theme-danger-disabled-fg: var(--pdl-link-theme-danger-disabled-fg);
+            --pdl-comp-anchor-theme-danger-default-fg: var(--pdl-link-theme-danger-default-fg);
+            --pdl-comp-anchor-theme-primary-disabled-fg: var(--pdl-link-theme-primary-disabled-fg);
+            --pdl-comp-anchor-theme-primary-default-fg: var(--pdl-link-theme-primary-default-fg);
+        }
+
+        /* I CAN'T TAKE IT ANYMORE */
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            line-height: calc(1em + .4375rem);
+        }
+
+        @media screen and (min-width: 685px) {
+            :-webkit-scrollbar {
+                scrollbar-gutter: stable;
+                width: 6px;
+            }
+
+            :-webkit-scrollbar-thumb {
+                background-color: var(--pdl-bg-subtle);
+                border-radius: 0;
+            }
+
+            :-webkit-scrollbar-track {
+                background: var(--pdl-bg-base);
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>rice</h1>
+    <div class="totallyNormalStyling">
+        <div class="normal">
+            <header>
+                <h1>rice</h1>
 
-        <img src="https://thewanderlustkitchen.com/wp-content/uploads/2013/12/Perfect-White-Rice-Recipe-Redo-17-2.jpg"
-            alt="epic rice picture" width="256" height="256">
-    </header>
+                <img src="https://thewanderlustkitchen.com/wp-content/uploads/2013/12/Perfect-White-Rice-Recipe-Redo-17-2.jpg"
+                    alt="epic rice picture" width="256" height="256">
+            </header>
 
-    <nav>
-        <a href="https://sreekar617.github.io/" target="_blank">totally normal website</a><br>
-        <a href="#bottom">too lazy to read</a>
-    </nav>
+            <nav>
+                <a href="https://sreekar617.github.io/" target="_blank">totally normal website</a><br>
+                <a href="#bottom">too lazy to read</a><br>
+                <a href="page_2.html">page 2</a><br>
+                <a href="page_3.html">page 3</a><br>
+                <a href="index.html">index</a><br>
+            </nav>
+            <!-- oh no the three classes didn't work -->
+            <main>
+                <h2>i love rice</h2><span style="padding-left: 20px;">reasons why i love rice:</span>
+                <ul>
+                    <li>looks good</li>
+                    <li>tastes good</li>
+                    <li>not expensive</li>
+                    <li>in Asia, everyone eats rice. The richest people eat <strong>rice.</strong> The poorest?
+                        <strong>rice.</strong> At a wedding?
+                        <strong>rice.</strong> At home?<strong> rice.</strong>
+                    </li>
+                    <li>shares a name with a certain service i used to offer</li>
+                    <li>rice on top.</li><br>
+                </ul>
+                <hr>
+                <h4>The following story contains content that is not recommended or endorsed in any way. The author of
+                    this
+                    story does not condone or endorse
+                    the activities within and takes no responsibility for any actions and consequences that may be
+                    caused
+                    from
+                    this
+                    story. This story is purely fictional and should not be taken as an instruction or
+                    encouragement to engage in any harmful or illegal activities.
+                </h4>
+                <h4> pls no point deduction for goofy ahh
+                    paragraph</h4>
+                <article>
+                    <br>
+                    <p>bro had to write a disclaimer&#128128;<br><br><br> This is your last warning. turn
+                        back
+                        now, unless you <em>really</em> want to learn
+                        more about rice<br><br></p>
 
-    <main>
-        <h2>i love rice</h2><span style="padding-left: 20px;">reasons why i love rice:</span>
-        <ul>
-            <li>looks good</li>
-            <li>tastes good</li>
-            <li>not expensive</li>
-            <li>in Asia, everyone eats rice. The richest people eat <strong>rice.</strong> The poorest?
-                <strong>rice.</strong> At a wedding?
-                <strong>rice.</strong> At home?<strong> rice.</strong>
-            </li>
-            <li>rice on top.</li><br>
-        </ul>
-        <hr>
-        <h5>THE FOLLOWING ESSAY WAS NOT WRITTEN BY ME</h5>
-        <article>
-            bro had to write a disclaimer &#128128;
+                    <p class="snipcss-o1I82">ok then
+        </div><em><span class="normal">*clears throat and equips</span> anime voice*</em><br>
+        <!-- oh god what was that code i just wrote -->
+        <br>
+        Oh, so you want to know more about rice, huh? <em> *giggles softly* </em>
+        Well,
+        silly, I'd be more than happy to talk
+        about rice. You know, rice is such a staple food and oh-so-versatile! It comes in different varieties
+        like basmati, jasmine, or arborio. <em> *bites lip* </em> Mmm, the aroma of cooking rice can be quite
+        intoxicating, don't you think? <em> *gently leans forward* </em> It's packed with carbohydrates to give us
+        that oh-so-good energy when you need it, <em> *winks* </em> and can complement a wide range of dishes,
+        like
+        savory stir-fries or even sweet rice pudding. Whether you prefer it fluffy or sticky, rice can really
+        satisfy your hunger in more ways than one. Is there anything specific you'd like to know about rice,
+        hun? <em> *innocently plays with a strand of hair* </em><br><br><br>
+        <!-- help me i am being held captive by my own code -->
+        </p>
         </article>
-    </main>
+        </main>
 
-    <footer>
-        <a id="bottom" href="page_2.html">page 2 nerds</a>
-        <p>this page is a school project lol</p>
-    </footer>
+        <footer>
+            <a id="bottom" href="index.html">index nerds</a>
+            <div class="normal">
+                <p>yeah so don't mind the 600 lines of css that i stole from a website, couldn't get to work, tried
+                    removing
+                    (it broke the entire page), put back, and then modified with the most jank 25 lines of code i have
+                    ever
+                    written in my life. also i marked up this code with high quality comments</p>
+                <h3>bye</h3>
+                <h5>bye</h5>
+                <h6>bye</h6>
+            </div>
+        </footer>
 
+    </div>
+    </div>
 </body>
 
 </html>
+<!-- thank god it's over -->
