@@ -13,6 +13,14 @@
             padding-left: 0.7%;
         }
 
+        .purple {
+            color: var(--cool-purple);
+        }
+
+        .white {
+            color: white;
+        }
+
         body {
             font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
             background: var(--pdl-bg-base);
@@ -26,6 +34,9 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            background-color: var(--black);
+            color: var(--lavender-web);
+
         }
 
         :root {
@@ -37,15 +48,50 @@
             --oxford-blue: #1b2a41ff;
             --charcoal: #324a5fff;
             --lavender-web: #ccc9dcff;
+            --cool-purple: #a594fd;
+            --heading-color: #f1f1ef;
         }
 
-        h1 {
-            font-size: 1.5rem;
+        h1,
+        h2 {
+            color: var(--cool-purple);
         }
+
+        h3,
+        h5,
+        h6 {
+            color: white;
+        }
+
+
 
         img {
             max-width: 100%;
             height: auto;
+        }
+
+        a:link {
+            color: var(--lavender-web);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: var(--charcoal);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
         }
 
         @media screen and (min-width: 685px) {
@@ -92,18 +138,23 @@
                     <li>rice on top.</li><br>
                 </ul>
                 <hr>
-                <h4>The following story contains content that is not recommended or endorsed in any way. The author of
-                    this
-                    story does not condone or endorse
-                    the activities within and takes no responsibility for any actions and consequences that may be
-                    caused
-                    from
-                    this
-                    story. This story is purely fictional and should not be taken as an instruction or
-                    encouragement to engage in any harmful or illegal activities.
-                </h4>
-                <h4> pls no point deduction for goofy ahh
-                    paragraph</h4>
+                <div class="white">
+                    <h4>The following story contains content that is not recommended or endorsed in any
+                        way. The author of
+                        this
+                        story does not condone or endorse
+                        the activities within and takes no responsibility for any actions and consequences that may be
+                        caused
+                        from
+                        this
+                        story. This story is purely fictional and should not be taken as an instruction or
+                        encouragement to engage in any harmful or illegal activities.
+                    </h4>
+                </div>
+                <div class="purple">
+                    <h4> pls no point deduction for goofy ahh
+                        paragraph</h4>
+                </div>
                 <article>
                     <br>
                     <p>bro had to write a disclaimer&#128128;<br><br><br> This is your last warning. turn
