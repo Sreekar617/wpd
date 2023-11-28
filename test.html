@@ -360,78 +360,21 @@
       z-index: 2;
       backdrop-filter: blur(12vmax)
     }
-
-    #links,
-    .meta-link {
-      display: flex;
-      gap: .5rem
-    }
-
-    #links {
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      padding: 1rem
-    }
-
-    .meta-link {
-      align-items: center
-    }
-
-    .meta-link>:is(span, a) {
-      font-family: "Rubik", sans-serif;
-      font-size: .9rem;
-      color: #fff
-    }
-
-    .meta-link>.label {
-      width: 160px;
-      text-align: right
-    }
-
-    .meta-link>a {
-      text-decoration: none;
-      outline: 0
-    }
-
-    .meta-link>a.source {
-      color: #5e6ad2
-    }
-
-    .meta-link>a:is(:hover, :focus)>i {
-      color: #fff
-    }
-
-    .meta-link>a.youtube {
-      color: #ef5350
-    }
-
-    .meta-link>a.youtube>i {
-      padding-top: .2rem
-    }
-
-    .meta-link>a>i {
-      height: 1rem;
-      line-height: 1rem
-    }
   </style>
 </head>
+<div class="screen">
+  <div class="screen-image"></div>
+  <div class="screen-overlay"></div>
+  <div class="screen-content">
+    <i class="screen-icon fa-brands fa-codepen"></i>
+    <div class="screen-user">
+      <span class="name" data-value="RICE">RICE</span>
+      <a class="link" href="https://github.com/Sreekar617/" target="_blank">@Sreekar617</a>
 
-<body>
-  <script></script>
-  <div class="screen">
-    <div class="screen-image"></div>
-    <div class="screen-overlay"></div>
-    <div class="screen-content">
-      <i class="screen-icon fa-brands fa-codepen"></i>
-      <div class="screen-user">
-        <span class="name" data-value="RICE">RICE</span>
-        <a class="link" href="https://github.com/Sreekar617/" target="_blank">@Sreekar617</a>
-      </div>
     </div>
   </div>
-</body>
+</div>
 
-</html>
+<div id="blob"></div>
+<div id="blur"></div>
+<script src="script.js"></script>
