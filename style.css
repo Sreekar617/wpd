@@ -1,132 +1,213 @@
+* {
+  box-sizing: border-box;
+}
+.aria{
+  display: flex;
+  align-items: center;
+}
+article {
+  column-count: 4;
+  column-gap: 40px;
+  margin-top: 2%;
+}
+
+.form-container {
+  width: 99vw;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: var(--black);
+  padding: 20px;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 30vw;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type="submit"] {
+  background-color: var(--cool-purple);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type="submit"]:hover {
+  background-color: #b4a5fd;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 p.small {
-			line-height: 1.55;
-			font-size: 18px;
-		}
+  line-height: 1.55;
+  font-size: 18px;
+}
 
-		.space {
-			margin-top: 3000px;
-		}
+.space {
+  margin-top: 3000px;
+}
 
-		.foot {
-			width: 98vw;
-			padding: 70px 0;
-			background-color: #18181a;
-		}
+.foot {
+  width: 98vw;
+  padding: 70px 0;
+  background-color: #18181a;
+}
 
-		.inner_foot {
-			width: 1100px;
-			height: 100%;
-			margin: 0 auto;
-			height: 100%;
-			color: aliceblue;
-		}
+.inner_foot {
+  width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  height: 100%;
+  color: aliceblue;
+}
 
-		ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			background-color: #333333;
-		}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
 
-		li {
-			float: left;
-		}
+li {
+  float: left;
+}
 
-		li a {
-			display: block;
-			color: white;
-			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
-		}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-		li a:hover {
-			background-color: #111111;
-		}
+li a:hover {
+  background-color: #111111;
+}
 
-		.active {
-			background-color: #04AA6D;
-		}
+.active {
+  background-color: #04aa6d;
+}
+.totallyNormalStyling {
+  margin-left: 0.7%;
+}
 
-		.purple {
-			color: var(--cool-purple);
-		}
+.purple {
+  color: var(--cool-purple);
+}
 
-		.white {
-			color: white;
-		}
+.white {
+  color: white;
+}
 
-		body {
-			font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-			background: var(--pdl-bg-base);
-			color: var(--pdl-fg-base);
-			line-height: 1.4;
-			font-size: 16px;
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  background: var(--pdl-bg-base);
+  color: var(--pdl-fg-base);
+  line-height: 1.4;
+  font-size: 16px;
+}
 
-		}
+body,
+html {
+  height: 100%;
+  background-color: var(--black);
+  color: var(--lavender-web);
+}
 
-		body,
-		html {
-			height: 100%;
-			background-color: var(--black);
-			color: var(--lavender-web);
+:root {
+  --full-height: 100%;
+  --full-height: calc(var(--vh, 1vh) * 100 - env(keyboard-inset-height, 0px));
+  --pdl-font-family-web: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  --black: #000000ff;
+  --rich-black: #0c1821ff;
+  --oxford-blue: #1b2a41ff;
+  --charcoal: #324a5fff;
+  --lavender-web: #ccc9dcff;
+  --cool-purple: #a594fd;
+  --heading-color: #f1f1ef;
+}
 
-		}
+h1,
+h2 {
+  color: var(--cool-purple);
+}
 
-		:root {
-			--full-height: 100%;
-			--full-height: calc(var(--vh, 1vh) * 100 - env(keyboard-inset-height, 0px));
-			--pdl-font-family-web: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-			--black: #000000ff;
-			--rich-black: #0c1821ff;
-			--oxford-blue: #1b2a41ff;
-			--charcoal: #324a5fff;
-			--lavender-web: #ccc9dcff;
-			--cool-purple: #a594fd;
-			--heading-color: #f1f1ef;
-		}
+h3,
+h5,
+h6 {
+  color: white;
+}
 
-		h1,
-		h2 {
-			color: var(--cool-purple);
-		}
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-		h3,
-		h5,
-		h6 {
-			color: white;
-		}
+a:link {
+  background-color: transparent;
+  text-decoration: none;
+}
 
+a:visited {
+  background-color: transparent;
+  text-decoration: none;
+}
 
+a:hover {
+  background-color: transparent;
+}
 
-		img {
-			max-width: 100%;
-			height: auto;
-		}
+a:active {
+  background-color: transparent;
+  text-decoration: underline;
+}
 
-		a:link {
-			background-color: transparent;
-			text-decoration: none;
-		}
-
-		a:visited {
-			background-color: transparent;
-			text-decoration: none;
-		}
-
-		a:hover {
-			background-color: transparent;
-		}
-
-		a:active {
-			background-color: transparent;
-			text-decoration: underline;
-		}
-
-		@media screen and (min-width: 685px) {
-			body * {
-				scrollbar-width: thin;
-				scrollbar-color: var(--pdl-bg-subtle) var(--pdl-bg-base);
-			}
-		}
+@media screen and (min-width: 685px) {
+  body * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pdl-bg-subtle) var(--pdl-bg-base);
+  }
+}
