@@ -1,151 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
 
-      .form-container {
-        width: 99vw;
-        display: flex;
-        justify-content: center;
-        border-radius: 5px;
-        background-color: var(--black);
-        padding: 20px;
-      }
+<head>
+    <title>My Audio</title>
+</head>
 
-      input[type="text"],
-      select,
-      textarea {
-        width: 30vw;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-      }
+<body>
 
-      label {
-        padding: 12px 12px 12px 0;
-        display: inline-block;
-      }
+    <div>Test</div>
 
-      input[type="submit"] {
-        background-color: var(--cool-purple);
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
-      }
 
-      input[type="submit"]:hover {
-        background-color: #b4a5fd;
-      }
+    <audio id="my-audio" autoplay
+        src="explode_11.mp3"></audio>
 
-      .col-25 {
-        float: left;
-        width: 25%;
-        margin-top: 6px;
-      }
+    <script type="text/javascript">
 
-      .col-75 {
-        float: left;
-        width: 75%;
-        margin-top: 6px;
-      }
+        var isAudioPlayed = false;
 
-      /* Clear floats after the columns */
-      .row::after {
-        content: "";
-        display: table;
-        clear: both;
-      }
 
-      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width: 600px) {
-        .col-25,
-        .col-75,
-        input[type="submit"] {
-          width: 100%;
-          margin-top: 0;
+
+        function playAudio() {
+            
+            isAudioPlayed = true;
+            const myAudio = document.getElementById("my-audio");
+            myAudio.play();
         }
-      }
-    </style>
-  </head>
 
-  <body>
-    <nav>
-      <ul>
-        <li><a class="active" href="index.html">index</a></li>
-        <li><a href="page_2.html"></a></li>
-        <li><a href="page_3.html">page 3</a></li>
-        <li><a href="test.html" target="_blank">totally normal website</a></li>
-        <li><a href="#bottom">too lazy to read</a></li>
-      </ul>
-    </nav>
-    <h2>Contact</h2>
 
-    <div class="form-container">
-      <form action="action.php">
-        <div class="row">
-          <div class="col-25">
-            <label for="fname">First Name</label>
-          </div>
-          <div class="col-75">
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              placeholder="Your first name.."
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Last Name</label>
-          </div>
-          <div class="col-75">
-            <input
-              type="text"
-              id="lname"
-              name="lname"
-              placeholder="Your last name.."
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="country">Country</label>
-          </div>
-          <div class="col-75">
-            <select id="country" name="country">
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
-              <option value="usa">USA</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="content">Message</label>
-          </div>
-          <div class="col-75">
-            <textarea
-              id="content"
-              name="content"
-              placeholder="Write something.."
-              style="height: 200px"
-            ></textarea>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+        document.body.onclick = ()=>{
+            if(isAudioPlayed) return ;
+            playAudio();
+        }
