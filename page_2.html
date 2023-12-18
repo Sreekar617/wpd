@@ -1,33 +1,378 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>My Audio</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ok</title>
+  <style>
+    @keyframes pan-overlay {
+      0% {
+        background-position: 0 0
+      }
 
-<body>
+      to {
+        background-position: 0-100%
+      }
+    }
 
-    <div>Test</div>
+    @keyframes pan-image {
+      0% {
+        background-position: 36% 42%;
+        background-size: 200%
+      }
 
+      20% {
+        background-position: 30% 35%;
+        background-size: 200%
+      }
 
-    <audio id="my-audio" autoplay
-        src="explode_11.mp3"></audio>
+      20.0001% {
+        background-position: 18% 15%;
+        background-size: 500%
+      }
 
-    <script type="text/javascript">
+      40% {
+        background-position: 49% 81%;
+        background-size: 500%
+      }
 
-        var isAudioPlayed = false;
+      40.0001% {
+        background-position: 80% 42%;
+        background-size: 300%
+      }
 
+      60% {
+        background-position: 84% 33%;
+        background-size: 300%
+      }
 
+      60.0001% {
+        background-position: 0 0;
+        background-size: 300%
+      }
 
-        function playAudio() {
-            
-            isAudioPlayed = true;
-            const myAudio = document.getElementById("my-audio");
-            myAudio.play();
-        }
+      80% {
+        background-position: 15% 4%;
+        background-size: 300%
+      }
 
+      80.0001% {
+        background-position: 80% 10%;
+        background-size: 300%
+      }
 
-        document.body.onclick = ()=>{
-            if(isAudioPlayed) return ;
-            playAudio();
-        }
+      to {
+        background-position: 72% 14%;
+        background-size: 300%
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        rotate: 0deg
+      }
+
+      50% {
+        scale: 1 1.5
+      }
+
+      to {
+        rotate: 360deg
+      }
+    }
+
+    :root {
+      --background-rgb: 29 30 34;
+      --blue-rgb: 80 71 65;
+      --primary-rgb: var(--blue-rgb);
+      --blob-color-1: rgb(var(--blue-rgb));
+      --blob-color-2: dodgerblue
+    }
+
+    .screen,
+    body {
+      overflow: hidden
+    }
+
+    .screen {
+      width: 500px;
+      display: flex;
+      border: 3px solid rgb(var(--primary-rgb)/80%);
+      aspect-ratio: 10/16;
+      border-radius: 1rem;
+      background-color: rgb(var(--primary-rgb)/15%);
+      position: relative;
+      z-index: 10
+    }
+
+    .screen-image,
+    .screen-overlay {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0
+    }
+
+    .screen-overlay {
+      background: linear-gradient(rgb(var(--primary-rgb)/.15), rgb(var(--primary-rgb)/.15) 3px, transparent 3px, transparent 9px);
+      background-size: 100% 9px;
+      animation: pan-overlay 22s infinite linear;
+      z-index: 2
+    }
+
+    .screen-image {
+      background-image: url(rice.jpg);
+      z-index: 1;
+      background-size: 300%;
+      background-position: 0 0;
+      opacity: .6;
+      animation: pan-image 15s linear infinite
+    }
+
+    .screen-content>.screen-user,
+    .screen>.screen-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative
+    }
+
+    .screen>.screen-content {
+      justify-content: flex-end;
+      flex-grow: 1;
+      gap: 4rem;
+      z-index: 3;
+      margin: 1rem;
+      padding-bottom: 6rem;
+      border: 1px solid rgb(var(--primary-rgb)/50%);
+      border-radius: .6rem
+    }
+
+    .screen>.screen-content>.screen-icon {
+      color: #fff;
+      font-size: 4rem;
+      text-shadow: 0 0 .5rem #fff
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-2.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-2.ttf)format("truetype")
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-1.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-1.ttf)format("truetype");
+      unicode-range: u+f1e9-f40a, u+f425, u+f4e6
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-0.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-0.ttf)format("truetype");
+      unicode-range: u+e007-f15a, u+f167-f1e8, u+f1ed, u+f1f0-f1f1, u+f20e-f210, u+f213-f214, u+f230, u+f232, u+f23a, u+f26b, u+f270, u+f288, u+f299-f29b, u+f2a6, u+f2b0, u+f2c5-f2c6, u+f2e0, u+f368, u+f379, u+f392-f393, u+f39f, u+f3a9, u+f3ab-f3ac, u+f3c0, u+f3c7, u+f3ca, u+f3e2, u+f3eb-f3ec, u+f3ef, u+f3f8, u+f3fe, u+f419, u+f41b, u+f4d5-f4e4, u+f4f8-f4f9, u+f514, u+f5b5, u+f6c9, u+f731, u+f77b, u+f7af, u+f7e1, u+f83b
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background-color: rgb(var(--background-rgb));
+      margin: 0
+    }
+
+    .fa-brands {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: var(--fa-display, inline-block);
+      font-style: normal;
+      font-variant: normal;
+      line-height: 1;
+      text-rendering: auto;
+      font-family: "Font Awesome 6 Brands";
+      font-weight: 400
+    }
+
+    .fa-codepen:before {
+      content: ""
+    }
+
+    .screen-content>.screen-user {
+      gap: 1rem
+    }
+
+    .screen>.screen-content>.screen-user::after,
+    .screen>.screen-content>.screen-user::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      background-color: rgb(var(--primary-rgb));
+      border-radius: 1rem;
+      box-shadow: 0 0 8px 3px rgb(var(--primary-rgb)/60%)
+    }
+
+    .screen>.screen-content>.screen-user::before {
+      height: 2px;
+      width: 50px;
+      translate: -20px -1rem;
+      opacity: .75
+    }
+
+    .screen>.screen-content>.screen-user::after {
+      height: 3px;
+      width: 30px;
+      translate: 26px calc(-1rem - .5px)
+    }
+
+    .screen-content>.screen-user>:is(.name, .link),
+    .screen>.screen-content>.screen-user>:is(.name, .link) {
+      font-family: "Source Code Pro", monospace;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase
+    }
+
+    .screen-content>.screen-user>.name,
+    .screen>.screen-content>.screen-user>.name {
+      position: relative;
+      font-size: 4.25rem;
+      font-weight: 400
+    }
+
+    .screen>.screen-content>.screen-user>.name::after,
+    .screen>.screen-content>.screen-user>.name::before {
+      content: "";
+      height: 4px;
+      width: 4px;
+      position: absolute;
+      border: 2px solid #fff;
+      border-radius: 2px
+    }
+
+    .screen>.screen-content>.screen-user>.name::before {
+      top: 55%;
+      right: -1.5rem
+    }
+
+    .screen>.screen-content>.screen-user>.name::after {
+      top: 45%;
+      left: -1.5rem
+    }
+
+    .screen-content>.screen-user>.link,
+    .screen>.screen-content>.screen-user>.link {
+      opacity: .8;
+      font-size: 1.5rem;
+      text-shadow: 0 0 .5rem #fff;
+      font-weight: 400;
+      letter-spacing: .3rem;
+      text-decoration: none
+    }
+
+    .screen>.screen-content>.screen-user>.link:is(:hover, :focus) {
+      text-decoration: underline
+    }
+
+    .screen>.screen-content>.screen-user:after,
+    .screen>.screen-content>.screen-user:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      background-color: rgb(var(--primary-rgb));
+      border-radius: 1rem;
+      box-shadow: 0 0 8px 3px rgb(var(--primary-rgb)/60%)
+    }
+
+    .screen>.screen-content>.screen-user:before {
+      height: 2px;
+      width: 50px;
+      translate: -20px -1rem;
+      opacity: .75
+    }
+
+    .screen>.screen-content>.screen-user:after {
+      height: 3px;
+      width: 30px;
+      translate: 26px calc(-1rem - .5px)
+    }
+
+    .screen>.screen-content>.screen-user>.name:after,
+    .screen>.screen-content>.screen-user>.name:before {
+      content: "";
+      height: 4px;
+      width: 4px;
+      position: absolute;
+      border: 2px solid #fff;
+      border-radius: 2px
+    }
+
+    .screen>.screen-content>.screen-user>.name:before {
+      top: 55%;
+      right: -1.5rem
+    }
+
+    .screen>.screen-content>.screen-user>.name:after {
+      top: 45%;
+      left: -1.5rem
+    }
+
+    @media (max-width:700px) {
+      .screen {
+        scale: .6;
+        margin-bottom: 0
+      }
+    }
+
+    #blob,
+    #blur {
+      position: absolute
+    }
+
+    #blob {
+      background-color: #fff;
+      height: 34vmax;
+      aspect-ratio: 1;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--blob-color-1), var(--blob-color-2));
+      animation: rotate 20s infinite;
+      opacity: .5
+    }
+
+    #blur {
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      backdrop-filter: blur(12vmax)
+    }
+  </style>
+</head><audio id="my-audio" autoplay src="explode_11.mp3"></audio>
+<script
+  type="text/javascript"> var isAudioPlayed = false; function playAudio() { isAudioPlayed = true; const myAudio = document.getElementById("my-audio"); myAudio.play(); } document.body.onclick = () => { if (isAudioPlayed) return; playAudio(); } </script>
+<div class="screen">
+  <div class="screen-image"></div>
+  <div class="screen-overlay"></div>
+  <div class="screen-content"> <i class="screen-icon fa-brands fa-codepen"></i>
+    <div class="screen-user"> <span class="name" data-value="RICE">RICE</span> <a class="link"
+        href="https://github.com/Sreekar617/" target="_blank">@Sreekar617</a> </div>
+  </div>
+</div>
+<div id="blob"></div>
+<div id="blur"></div>
+    <input name="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField"/>
+<script src="script.js"></script>
