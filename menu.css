@@ -1,0 +1,234 @@
+@keyframes float {
+
+    from,
+    to {
+      transform: translateY(0)
+    }
+  
+    50% {
+      transform: translateY(-3%)
+    }
+  }
+  
+  @keyframes background-pan {
+    from {
+      background-position: 1000% center
+    }
+  
+    to {
+      background-position: 0 center
+    }
+  }
+  
+  :root {
+    --green: rgb(42, 252, 152);
+    --blue: rgb(41, 121, 255)
+  }
+  
+  body {
+    height: 100vh;
+    background-color: #000;
+    margin: 0;
+    overflow: hidden;
+    display: grid;
+    place-items: center
+  }
+  
+  .line {
+    display: flex;
+    justify-content: space-between
+  }
+  
+  .menu-item {
+    color: #fff;
+    font-size: clamp(2rem, 8vw, 10rem);
+    font-family: Rubik;
+    margin: 0;
+    transition: opacity 250ms
+  }
+  
+  a {
+    text-decoration: none
+  }
+  
+  #text:has(.fancy:hover) .menu-item:not(.fancy:hover) {
+    opacity: .2
+  }
+  
+  .fancy span {
+    display: inline-block
+  }
+  
+  .fancy>.outer {
+    transition: transform 350ms
+  }
+  
+  .fancy:hover>.outer {
+    transition-duration: .8s
+  }
+  
+  .fancy:hover>.outer>.inner {
+    animation: 5s infinite float
+  }
+  
+  .fancy:hover>.outer>.inner>.letter {
+    background: linear-gradient(to right, var(--blue), var(--green), var(--blue));
+    background-size: 1000%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: 150s linear infinite background-pan
+  }
+  
+  .fancy:hover>.outer:first-child {
+    transform: translate(-30%, 15%) rotate(8deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(2) {
+    transform: translate(-20%, 10%) rotate(4deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(3) {
+    transform: translate(-5%, 20%) rotate(-6deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(4) {
+    transform: translate(0, 4%) rotate(-8deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(5) {
+    transform: translate(0, -10%) rotate(5deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(6) {
+    transform: translate(0, 10%) rotate(-3deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(7) {
+    transform: translate(0, -20%) rotate(-5deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(8) {
+    transform: translate(0, 8%) rotate(10deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(9) {
+    transform: translate(0, -15%) rotate(8deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(10) {
+    transform: translate(0, 8%) rotate(-6deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(11) {
+    transform: translate(25%, -5%) rotate(-3deg)
+  }
+  
+  .fancy:hover>.outer:nth-child(12) {
+    transform: translate(60%, -15%) rotate(-10deg)
+  }
+  
+  body {
+    background-color: #141414;
+    margin: 0
+  }
+  
+  #menu {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 100vw
+  }
+  
+  #menu-items {
+    margin-left: clamp(4rem, 20vw, 48rem);
+    position: relative;
+    z-index: 2
+  }
+  
+  #menu[data-active-index="0"]>#menu-background-pattern {
+    background-position: 0 -25%
+  }
+  
+  #menu[data-active-index="1"]>#menu-background-pattern {
+    background-position: 0 -50%
+  }
+  
+  #menu[data-active-index="2"]>#menu-background-pattern {
+    background-position: 0 -75%
+  }
+  
+  #menu[data-active-index="3"]>#menu-background-pattern {
+    background-position: 0 -100%
+  }
+  
+  #menu[data-active-index="0"]>#menu-background-image {
+    background-position: center 65%
+  }
+  
+  #menu[data-active-index="1"]>#menu-background-image {
+    background-position: center 70%
+  }
+  
+  #menu[data-active-index="2"]>#menu-background-image {
+    background-position: center 75%
+  }
+  
+  #menu[data-active-index="3"]>#menu-background-image {
+    background-position: center 80%
+  }
+  
+  #menu-background-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, .1) 9%, transparent 9%);
+    background-position: 0 0;
+    background-size: 12vmin 12vmin;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity .8s, background-size .8s, background-position .8s;
+    width: 100vw;
+    z-index: 1
+  }
+  
+  #menu-background-image {
+    background-image: url("https://raw.githubusercontent.com/Sreekar617/wpd/main/mgg-vitchakorn-zXNC_lBBVGE-unsplash.jpg");
+    background-position: center 60%;
+    background-size: 110vmax;
+    height: 100%;
+    left: 0;
+    opacity: .15;
+    position: absolute;
+    top: 0;
+    transition: opacity .8s, background-size .8s, background-position .8s;
+    width: 100%;
+    z-index: 0
+  }
+  
+  #menu-items:hover~#menu-background-pattern {
+    background-size: 11vmin 11vmin;
+    opacity: .5
+  }
+  
+  #menu-items:hover~#menu-background-image {
+    background-size: 100vmax;
+    opacity: .1
+  }
+  
+  #menu-items:hover>.menu-item {
+    opacity: .3
+  }
+  
+  #menu-items:hover>.menu-item:hover {
+    opacity: 1
+  }
+  
+  .menu-item {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: 'Rubik';
+    font-size: clamp(3rem, 8vw, 8rem);
+    padding: clamp(.25rem, .5vw, 1rem) 0;
+    text-decoration: none;
+    transition: opacity .4s
+  }
