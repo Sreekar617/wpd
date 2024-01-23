@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ok</title>
+  <style>
+    :root {
+      --background-rgb: 29 30 34;
+      --blue-rgb: 80 71 65;
+      --primary-rgb: var(--blue-rgb);
+      --blob-color-1: rgb(var(--blue-rgb));
+      --blob-color-2: dodgerblue --black: #000000ff;
+      --rich-black: #0c1821ff;
+      --oxford-blue: #1b2a41ff;
+      --charcoal: #324a5fff;
+      --lavender-web: #ccc9dcff;
+      --cool-purple: #a594fd;
+      --heading-color: #f1f1ef;
+    }
+
+    .screen,
+    body {
+      overflow: auto
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-2.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-2.ttf)format("truetype")
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-1.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-1.ttf)format("truetype");
+      unicode-range: u+f1e9-f40a, u+f425, u+f4e6
+    }
+
+    @font-face {
+      font-family: "Font Awesome 6 Brands";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-0.woff2)format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.4.2/webfonts/pro-fa-brands-400-0.ttf)format("truetype");
+      unicode-range: u+e007-f15a, u+f167-f1e8, u+f1ed, u+f1f0-f1f1, u+f20e-f210, u+f213-f214, u+f230, u+f232, u+f23a, u+f26b, u+f270, u+f288, u+f299-f29b, u+f2a6, u+f2b0, u+f2c5-f2c6, u+f2e0, u+f368, u+f379, u+f392-f393, u+f39f, u+f3a9, u+f3ab-f3ac, u+f3c0, u+f3c7, u+f3ca, u+f3e2, u+f3eb-f3ec, u+f3ef, u+f3f8, u+f3fe, u+f419, u+f41b, u+f4d5-f4e4, u+f4f8-f4f9, u+f514, u+f5b5, u+f6c9, u+f731, u+f77b, u+f7af, u+f7e1, u+f83b
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background-color: rgb(var(--background-rgb));
+      margin: 0
+    }
+
+
+
+    .form-container {
+      width: 99vw;
+      display: flex;
+      justify-content: center;
+      border-radius: 5px;
+      padding: 20px;
+    }
+
+    input[type=text],
+    select,
+    textarea {
+      width: 30vw;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+
+    input[type=submit] {
+      background-color: var(--cool-purple);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+
+
+    .card {
+      width: 50vw;
+      position: relative;
+      background-color: rgb(16 16 16);
+      border: 1px solid rgb(255 255 255 / 5%);
+      border-radius: 1.5rem;
+      padding: 1rem;
+    }
+
+    .card:after {
+      content: "";
+      height: 70px;
+      width: 1px;
+      position: absolute;
+      left: -1px;
+      top: 65%;
+      transition: top, opacity;
+      transition-duration: 600ms;
+      transition-timing-function: ease;
+      background: linear-gradient(transparent,
+          var(--primary-color),
+          transparent);
+      opacity: 0;
+    }
+
+    .card:after {
+      top: 65%;
+      opacity: 0;
+    }
+
+    .card:hover:after {
+      top: 25%;
+      opacity: 1;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px);
+      background-position: 50% 50%;
+      background-size: 1.1rem 1.1rem;
+      padding: 4rem;
+      border-radius: 1.25rem;
+      overflow: hidden;
+    }
+
+    .card-content> :is(h1, h3, p) {
+      text-align: center;
+    }
+
+    .card-content>h1 {
+      color: rgb(250 249 246);
+      font-size: 2.6rem;
+    }
+
+    .card-content>h3 {
+      color: var(--primary-color);
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    .card-content>p {
+      color: rgb(255 255 255 / 75%);
+      line-height: 1.5rem;
+    }
+
+    @media(max-width: 700px) {
+      .card {
+        width: calc(100% - 2rem);
+        margin: 0rem 1rem;
+        padding: 0.75rem;
+        border-radius: 1rem;
+      }
+    }
+
+    @media(max-width: 600px) {
+      .card-content {
+        padding: 3rem;
+      }
+
+      .card-content>h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+</head>
+
+
+<div class="form-container">
+  <form action="action.php">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+
+
+
+
+
+          <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+
+        </div>
+        <div class="row">
+
+
+
+          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        </div>
+        <div class="row">
+
+
+          <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>
+
+        </div>
+        <div class="row">
+
+
+
+          <textarea id="subject" name="subject" placeholder="tell me why i got a 1..." style="height:200px"></textarea>
+
+        </div>
+        <br>
+        <div class="row">
+          <input type="submit" value="Submit">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="script.js"></script>

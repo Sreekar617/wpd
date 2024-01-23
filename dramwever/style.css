@@ -8,6 +8,10 @@
   --heading-color: #f1f1ef;
 }
 
+img {
+	border-radius: 25px
+}
+
 p.small {
   line-height: 1.55;
   font-size: 18px;
@@ -73,11 +77,18 @@ li a:hover {
   color: white;
 }
 
-body,
-html {
+body {
+ background-image: url("bg.jpg");
+ background-color: #cccccc;
+}
+
+.container {
   height: 100%;
+  width: 1550px;
   background-color: var(--black);
   color: var(--lavender-web);
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
